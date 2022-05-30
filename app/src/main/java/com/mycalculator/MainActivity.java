@@ -1,5 +1,6 @@
 package com.mycalculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.multidex.MultiDex;
 
@@ -13,6 +14,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import es.dmoral.toasty.Toasty;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,11 +31,13 @@ public class MainActivity extends AppCompatActivity {
     TextView myCalculator;
     EditText firstNumber, secondNumber;
     Button reset, sum, sub, mul, div;
+    FirebaseFirestore firebaseFirestore;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MultiDex.install(this);
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         myCalculator = (TextView) findViewById(R.id.mycalculator);
         firstNumber = (EditText) findViewById(R.id.firstnumber);
@@ -51,13 +64,31 @@ public class MainActivity extends AppCompatActivity {
                 String second = secondNumber.getText().toString();
 
                 if(!TextUtils.isEmpty(first) || !TextUtils.isEmpty(second)){
+                   // String uuid = UUID.randomUUID().toString();
+                    Map<String, Object> history = new HashMap<>();
+                    history.put("first", first);
+                    history.put("second", second);
+                   // history.put("UUID", uuid);
                     double n1 = Double.parseDouble(first);
                     double n2 = Double.parseDouble(second);
                     double sum = n1+n2;
                     myCalculator.setText(String.valueOf(sum));
-
-                    Toasty.success(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                }
+                    history.put("sum", sum);
+                    firebaseFirestore.collection("Datastore").add(history)
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                                            if(task.isSuccessful()){
+                                                Toasty.success(MainActivity.this, "Done", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toasty.error(MainActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                    }
                 else
                     Toasty.error(MainActivity.this, "Error! Enter Value first", Toast.LENGTH_LONG).show();
             }
@@ -69,14 +100,32 @@ public class MainActivity extends AppCompatActivity {
                 String first = firstNumber.getText().toString();
                 String second = secondNumber.getText().toString();
 
-                if(!TextUtils.isEmpty(first) || !TextUtils.isEmpty(second)){
+                if(!TextUtils.isEmpty(first) || !TextUtils.isEmpty(second)) {
+                    // String uuid = UUID.randomUUID().toString();
+                    Map<String, Object> history = new HashMap<>();
+                    history.put("first", first);
+                    history.put("second", second);
+                    // history.put("UUID", uuid);
                     double n1 = Double.parseDouble(first);
                     double n2 = Double.parseDouble(second);
-                    double sub = n1-n2;
+                    double sub = n1 - n2;
                     myCalculator.setText(String.valueOf(sub));
-
-                    Toasty.success(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                }
+                    history.put("sub", sub);
+                    firebaseFirestore.collection("Datastore").add(history)
+                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                    if (task.isSuccessful()) {
+                                        Toasty.success(MainActivity.this, "Done", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toasty.error(MainActivity.this, "" + e.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                    }
                 else
                     Toasty.error(MainActivity.this, "Error! Enter Value first", Toast.LENGTH_LONG).show();
             }
@@ -89,13 +138,31 @@ public class MainActivity extends AppCompatActivity {
                 String second = secondNumber.getText().toString();
 
                 if(!TextUtils.isEmpty(first) || !TextUtils.isEmpty(second)){
+                    // String uuid = UUID.randomUUID().toString();
+                    Map<String, Object> history = new HashMap<>();
+                    history.put("first", first);
+                    history.put("second", second);
+                    // history.put("UUID", uuid);
                     double n1 = Double.parseDouble(first);
                     double n2 = Double.parseDouble(second);
                     double mul = n1*n2;
                     myCalculator.setText(String.valueOf(mul));
-
-                    Toasty.success(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                }
+                    history.put("mul", mul);
+                    firebaseFirestore.collection("Datastore").add(history)
+                            .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentReference> task) {
+                                    if(task.isSuccessful()){
+                                        Toasty.success(MainActivity.this, "Done", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toasty.error(MainActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                    }
                 else
                     Toasty.error(MainActivity.this, "Error! Enter Value first", Toast.LENGTH_LONG).show();
             }
@@ -108,17 +175,31 @@ public class MainActivity extends AppCompatActivity {
                 String second = secondNumber.getText().toString();
 
                 if(!TextUtils.isEmpty(first) || !TextUtils.isEmpty(second)){
+                    // String uuid = UUID.randomUUID().toString();
+                    Map<String, Object> history = new HashMap<>();
+                    history.put("first", first);
+                    history.put("second", second);
+                    // history.put("UUID", uuid);
                     double n1 = Double.parseDouble(first);
                     double n2 = Double.parseDouble(second);
-                    try {
                         double div = n1/n2;
                         myCalculator.setText(String.valueOf(div));
-                        if(n2!=0)
-                            Toasty.success(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                    }catch (ArithmeticException e){
-                        myCalculator.setText("Math Error");
-                        Toasty.error(MainActivity.this, "Exception: "+e, Toast.LENGTH_LONG).show();
-                    }
+                        history.put("div", div);
+                        firebaseFirestore.collection("Datastore").add(history)
+                                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                                        if(task.isSuccessful()){
+                                            Toasty.success(MainActivity.this, "Done", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toasty.error(MainActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                });
+
                 }
                 else
                     Toasty.error(MainActivity.this, "Error! Enter Value first", Toast.LENGTH_LONG).show();
