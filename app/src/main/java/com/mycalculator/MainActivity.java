@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.multidex.MultiDex;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         MultiDex.install(this);
         firebaseFirestore = FirebaseFirestore.getInstance();
+        startActivity(new Intent(getApplicationContext(), Retrive.class));
 
         myCalculator = (TextView) findViewById(R.id.mycalculator);
         firstNumber = (EditText) findViewById(R.id.firstnumber);
@@ -65,16 +67,17 @@ public class MainActivity extends AppCompatActivity {
 
                 if(!TextUtils.isEmpty(first) || !TextUtils.isEmpty(second)){
                    // String uuid = UUID.randomUUID().toString();
-                    Map<String, Object> history = new HashMap<>();
+ /*                   Map<String, Object> history = new HashMap<>();
                     history.put("first", first);
-                    history.put("second", second);
+                    history.put("second", second);  */
                    // history.put("UUID", uuid);
                     double n1 = Double.parseDouble(first);
                     double n2 = Double.parseDouble(second);
                     double sum = n1+n2;
                     myCalculator.setText(String.valueOf(sum));
-                    history.put("sum", sum);
-                    firebaseFirestore.collection("Datastore").add(history)
+                    Model model = new Model(first, second, String.valueOf(sum));
+         //           history.put("sum", sum);
+                    firebaseFirestore.collection("Datastore").add(model)
                                     .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                         @Override
                                         public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -222,4 +225,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

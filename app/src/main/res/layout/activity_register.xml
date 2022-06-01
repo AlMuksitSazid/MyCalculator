@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CDE1B7"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Account"
+        android:textSize="40dp"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:gravity="left"
+        android:textAlignment="center"
+        android:id="@+id/registerPage"
+        android:textAllCaps="false"
+        ></TextView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Email"
+        android:inputType="numberDecimal"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        android:gravity="left"
+        android:textAlignment="center"
+        android:id="@+id/email"
+        android:layout_margin="10dp"
+        android:background="#FFFFFF"
+        ></EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Password"
+        android:inputType="numberDecimal"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        android:gravity="left"
+        android:textAlignment="center"
+        android:id="@+id/password"
+        android:layout_margin="10dp"
+        android:background="#FFFFFF"
+        ></EditText>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="Register"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#D30808"
+        android:background="@color/white"
+        android:id="@+id/register"
+        android:layout_margin="5dp"
+        android:enabled="false"
+        android:textAllCaps="false"
+        ></Button>
+
+</LinearLayout>
