@@ -17,7 +17,7 @@
         android:textStyle="normal"
         android:textColor="@color/black"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:gravity="left"
         android:textAlignment="center"
         android:id="@+id/registerPage"
         android:textAllCaps="false"
