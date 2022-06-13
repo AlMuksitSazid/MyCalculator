@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,12 +35,14 @@ public class RegisterActivity extends AppCompatActivity {
     EditText email, password;
     Button register;
     FirebaseAuth firebaseAuth;
+    FirebaseFirestore firebaseFirestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         MultiDex.install(this);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         registerPage = (TextView) findViewById(R.id.registerPage);
         email = (EditText) findViewById(R.id.email);
@@ -60,9 +63,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                 else if(!TextUtils.isEmpty(Email) || !TextUtils.isEmpty(Password)){
                     // String uuid = UUID.randomUUID().toString();
-                    Map<String, Object> info = new HashMap<>();
-                    info.put("Email", Email);
-                    info.put("Password", Password);
                     // info.put("UUID", uuid);
                    // Model model = new Model(Email, Password);
                     firebaseAuth.createUserWithEmailAndPassword(Email,Password)
@@ -70,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
+                                        updatepassword(firebaseAuth.getCurrentUser().getEmail(), Password);
                                         Toasty.success(RegisterActivity.this, "Done", Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -82,6 +83,21 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else
                     Toasty.error(RegisterActivity.this, "Error! Enter value first", Toast.LENGTH_LONG).show();
+            }
+
+            private void updatepassword(String Email, String Password) {
+                Map<String, Object> user = new HashMap<>();
+                user.put("Email", Email);
+                user.put("Password", Password);
+                firebaseFirestore.collection("Password")
+                        .document(Email)
+                        .set(user)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                            }
+                        });
             }
         });
         email.addTextChangedListener(Register);

@@ -22,6 +22,8 @@ public class Retrive extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     List<Model>getList;
     DocumentReference documentReference;
+    Dataget adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,23 +31,23 @@ public class Retrive extends AppCompatActivity {
         recyclerView = recyclerView.findViewById(R.id.recycler);
         firebaseFirestore = FirebaseFirestore.getInstance();
         getList = new ArrayList<>();
-        Dataget Adapter = new Dataget(getList);
-        documentReference = FirebaseFirestore.collection("Datastore").document();
+         adapter = new Dataget(getList);
+        documentReference = firebaseFirestore.collection("Datastore").document();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(Retrive.this));
-        recyclerView.setAdapter(Adapter);
+        recyclerView.setAdapter(adapter);
         receiveData();
     }
 
     private void receiveData() {
-        FirebaseFirestore.collection("Datastore").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        firebaseFirestore.collection("Datastore").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 for(DocumentChange dc : value.getDocumentChanges()){
                     if (dc.getType() == DocumentChange.Type.ADDED){
                         Model model = dc.getDocument().toObject(Model.class);
                         getList.add(model);
-                        Dataget.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                     }
                 }
             }

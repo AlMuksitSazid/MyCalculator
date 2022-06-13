@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -34,12 +35,14 @@ public class LoginActivity extends AppCompatActivity {
     EditText email, password;
     Button register;
     FirebaseAuth firebaseAuth;
+    FirebaseFirestore firebaseFirestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         MultiDex.install(this);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         registerPage = (TextView) findViewById(R.id.registerPage);
         email = (EditText) findViewById(R.id.email);
@@ -65,6 +68,25 @@ public class LoginActivity extends AppCompatActivity {
                     info.put("Password", Password);
                     // info.put("UUID", uuid);
                     // Model model = new Model(Email, Password);
+                    firebaseFirestore.collection("Password")
+                                    .document()
+                                    .get()
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.isSuccessful()){
+                                                if (task.getResult().exists()){
+                                                    String password_old = task.getResult().getString("Password");
+                                                    if (Password.equals(password_old)){
+
+                                                    }
+                                                    else{
+                                                        Toasty.error(LoginActivity.this, "Password not match", Toast.LENGTH_LONG).show();
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
                     firebaseAuth.signInWithEmailAndPassword(Email,Password)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
