@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -33,13 +34,22 @@ public class MainActivity extends AppCompatActivity {
     EditText firstNumber, secondNumber;
     Button reset, sum, sub, mul, div;
     FirebaseFirestore firebaseFirestore;
+    FirebaseAuth firebaseAuth;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MultiDex.install(this);
-        firebaseFirestore = FirebaseFirestore.getInstance();
         startActivity(new Intent(getApplicationContext(), Retrive.class));
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        if (firebaseAuth.getCurrentUser().getEmail() != null){
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+        else{
+            startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+        }
 
         myCalculator = (TextView) findViewById(R.id.mycalculator);
         firstNumber = (EditText) findViewById(R.id.firstnumber);

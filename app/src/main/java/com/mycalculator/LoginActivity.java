@@ -28,7 +28,7 @@ import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
-public class RegisterActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     TextView registerPage;
     EditText email, password;
@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login);
         MultiDex.install(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -53,10 +53,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String Password = password.getText().toString();
 
                 if (!Email.endsWith(".com") || !Email.contains("@"))
-                    Toasty.warning(RegisterActivity.this, "Invalid Email type", Toast.LENGTH_LONG).show();
+                    Toasty.warning(LoginActivity.this, "Invalid Email type", Toast.LENGTH_LONG).show();
 
                 else if (password.getText().length()<8)
-                    Toasty.warning(RegisterActivity.this, "Password must be at least 8 characters", Toast.LENGTH_LONG).show();
+                    Toasty.warning(LoginActivity.this, "Password must be at least 8 characters", Toast.LENGTH_LONG).show();
 
                 else if(!TextUtils.isEmpty(Email) || !TextUtils.isEmpty(Password)){
                     // String uuid = UUID.randomUUID().toString();
@@ -64,24 +64,24 @@ public class RegisterActivity extends AppCompatActivity {
                     info.put("Email", Email);
                     info.put("Password", Password);
                     // info.put("UUID", uuid);
-                   // Model model = new Model(Email, Password);
-                    firebaseAuth.createUserWithEmailAndPassword(Email,Password)
+                    // Model model = new Model(Email, Password);
+                    firebaseAuth.signInWithEmailAndPassword(Email,Password)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
-                                        Toasty.success(RegisterActivity.this, "Done", Toast.LENGTH_SHORT).show();
+                                        Toasty.success(LoginActivity.this, "Done", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toasty.error(RegisterActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
+                                    Toasty.error(LoginActivity.this, ""+e.getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             });
                 }
                 else
-                    Toasty.error(RegisterActivity.this, "Error! Enter value first", Toast.LENGTH_LONG).show();
+                    Toasty.error(LoginActivity.this, "Error! Enter value first", Toast.LENGTH_LONG).show();
             }
         });
         email.addTextChangedListener(Register);
@@ -105,8 +105,8 @@ public class RegisterActivity extends AppCompatActivity {
                 .withUsername("username@gmail.com")
                 .withPassword("password12345")
                 .withMailto("to-email@gmail.com")
-          //      .withMailCc("cc-email@gmail.com")
-         //       .withMailBcc("bcc-email@gmail.com")
+                //      .withMailCc("cc-email@gmail.com")
+                //       .withMailBcc("bcc-email@gmail.com")
                 .withType(BackgroundMail.TYPE_PLAIN)
                 .withSubject("this is the subject")
                 .withBody("this is the body")

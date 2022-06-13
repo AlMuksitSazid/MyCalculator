@@ -6,20 +6,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CDE1B7"
-    tools:context=".RegisterActivity">
+    android:background="#D5AB2F"
+    tools:context=".LoginActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Account"
+        android:text="Login Account"
         android:textSize="40dp"
         android:textStyle="normal"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:gravity="center"
         android:textAlignment="center"
-        android:id="@+id/registerPage"
+        android:id="@+id/loginPage"
         android:textAllCaps="false"
         ></TextView>
 
@@ -55,12 +55,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:text="Register"
+        android:text="Sign in"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="#D30808"
         android:background="@color/white"
-        android:id="@+id/register"
+        android:id="@+id/signIn"
         android:layout_margin="5dp"
         android:enabled="false"
         android:textAllCaps="false"

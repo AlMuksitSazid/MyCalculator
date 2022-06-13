@@ -29,8 +29,8 @@ public class Retrive extends AppCompatActivity {
         recyclerView = recyclerView.findViewById(R.id.recycler);
         firebaseFirestore = FirebaseFirestore.getInstance();
         getList = new ArrayList<>();
-        adapter Adapter = new adapter(getList);
-        documentReference=FirebaseFirestore.collection("Datastore").document();
+        Dataget Adapter = new Dataget(getList);
+        documentReference = FirebaseFirestore.collection("Datastore").document();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(Retrive.this));
         recyclerView.setAdapter(Adapter);
@@ -45,7 +45,7 @@ public class Retrive extends AppCompatActivity {
                     if (dc.getType() == DocumentChange.Type.ADDED){
                         Model model = dc.getDocument().toObject(Model.class);
                         getList.add(model);
-                        adapter.notifyDataSetChanged();
+                        Dataget.notifyDataSetChanged();
                     }
                 }
             }
