@@ -3,12 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1565" />
+        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/drawable/design.xml" value="0.171" />
+        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/drawable/gradient_color.xml" value="0.146" />
+        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.171" />
+        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1565" />
+        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/activity_forget_password.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/activity_home.xml" value="0.19947916666666668" />
         <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
-        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/activity_main.xml" value="0.12364130434782608" />
+        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/activity_main.xml" value="0.13405797101449277" />
         <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/activity_register.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/activity_retrive.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/activity_text_view.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/fragment_blank.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidStudioProjects/MyCalculator/app/src/main/res/layout/genderitem.xml" value="0.203125" />
       </map>
     </option>
   </component>

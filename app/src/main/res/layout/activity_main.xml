@@ -1,128 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    android:background="@drawable/gradient_color"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/teal_200"
-        android:orientation="vertical">
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/calculator"
+            android:id="@+id/logo"
+            android:layout_centerInParent="true"
+            ></de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="My Calculator"
-            android:textSize="45dp"
+            android:text="@string/app_name"
+            android:textColor="#fff"
+            android:textSize="50dp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:gravity="center"
+            android:id="@+id/appname"
+            android:layout_margin="1dp"
+            android:layout_below="@id/logo"
             android:textAlignment="center"
-            android:id="@+id/mycalculator"
-            android:textAllCaps="true"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             ></TextView>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter 1st number"
-            android:inputType="numberDecimal"
-            android:textSize="40dp"
+
+       <ProgressBar
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/appname"
+           android:layout_centerInParent="true"
+           ></ProgressBar>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:lottie_fileName="splash.json"
+            app:lottie_loop="true"
+            android:visibility="gone"
+            app:lottie_autoPlay="true"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:id="@+id/firstnumber"
-            android:layout_margin="10dp"
-            android:background="#FFFFFF"
-            ></EditText>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            ></com.airbnb.lottie.LottieAnimationView>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter 2nd number"
-            android:inputType="numberDecimal"
-            android:textSize="40dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:id="@+id/secondnumber"
-            android:layout_margin="10dp"
-            android:background="#FFFFFF"
-            ></EditText>
+    </RelativeLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="Reset"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="#FD0303"
-            android:background="@color/white"
-            android:id="@+id/Reset"
-            android:layout_margin="5dp"
-            android:enabled="false"
-            android:textAllCaps="false"
-            ></Button>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="+"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:background="@color/cardview_light_background"
-            android:id="@+id/Sum"
-            android:layout_margin="5dp"
-            ></Button>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="-"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:background="@color/cardview_light_background"
-            android:id="@+id/Sub"
-            android:layout_margin="5dp"
-            ></Button>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="*"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:background="@color/cardview_light_background"
-            android:id="@+id/Mul"
-            android:layout_margin="5dp"
-            ></Button>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="/"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:background="@color/cardview_light_background"
-            android:id="@+id/Div"
-            android:layout_margin="5dp"
-            ></Button>
-
-    </LinearLayout>
-
-
-</ScrollView>
+</LinearLayout>

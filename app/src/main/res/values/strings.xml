@@ -1,5 +1,21 @@
 <resources>
-    <string name="app_name">My Calculator</string>
+    <string name="app_name">Easy Calculator</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_account">Add Account</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="login_account">Login Account</string>
+    <string name="my_calculator">My Calculator</string>
+    <string name="register">Register</string>
+    <string name="enter_your_email">Enter your Email...</string>
+    <string name="enter_your_password">Enter your Password...</string>
+    <string name="enter_your_full_name">Enter your full Name...</string>
+    <string name="register_here">Register here</string>
+    <string name="forgot_your_password">Forgot your password!</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="enter_your_fullemail">Enter your Email...</string>
+    <string name="enter_your_fullpassword">Enter your Password...</string>
+    <string name="sign_in">Sign in</string>
+    <string name="gender">Gender</string>
+    <string name="todo">TODO</string>
 </resources>

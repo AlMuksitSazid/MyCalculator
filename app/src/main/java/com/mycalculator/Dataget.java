@@ -20,8 +20,7 @@ public class Dataget extends RecyclerView.Adapter<Dataget.myview> {
     @NonNull
     @Override
     public myview onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_text_view,parent,false);
-        android.view.View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_text_view, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_text_view, parent,false);
         return new Dataget.myview(view);
     }
 

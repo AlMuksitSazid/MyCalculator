@@ -6,15 +6,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D5AB2F"
+    android:background="#8BC38E"
     tools:context=".LoginActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login Account"
-        android:textSize="40dp"
-        android:textStyle="normal"
+        android:text="@string/login_account"
+        android:textSize="50sp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_gravity="center"
         android:gravity="center"
@@ -24,38 +24,47 @@
         ></TextView>
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your Email"
-        android:inputType="numberDecimal"
-        android:textSize="30dp"
-        android:layout_gravity="center"
-        android:gravity="left"
-        android:textAlignment="center"
-        android:id="@+id/email"
         android:layout_margin="10dp"
         android:background="#FFFFFF"
+        android:textAlignment="viewStart"
+        android:hint="@string/enter_your_fullemail"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColorHint="#78909C"
+        android:textSize="25sp"
+        android:textIsSelectable="true"
+        android:autofillHints="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         ></EditText>
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your Password"
-        android:inputType="numberDecimal"
-        android:textSize="30dp"
-        android:layout_gravity="center"
-        android:gravity="left"
-        android:textAlignment="center"
-        android:id="@+id/password"
         android:layout_margin="10dp"
         android:background="#FFFFFF"
+        android:textAlignment="viewStart"
+        android:hint="@string/enter_your_fullpassword"
+        android:inputType="textPassword"
+        android:passwordToggleEnabled="true"
+        android:minHeight="48dp"
+        android:textColorHint="#78909C"
+        android:textSize="25sp"
+        android:textIsSelectable="true"
+        android:autofillHints="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         ></EditText>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="Sign in"
+        android:textSize="30sp"
+        android:text="@string/sign_in"
         android:layout_gravity="center"
         android:gravity="center"
         android:textColor="#D30808"
@@ -63,6 +72,48 @@
         android:id="@+id/signIn"
         android:layout_margin="5dp"
         android:enabled="false"
+        android:textAllCaps="false"
+        ></Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:text="@string/forgot_your_password"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:id="@+id/forgotPassword"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        android:textAllCaps="false"
+        ></Button>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/don_t_have_an_account"
+        android:textColor="#2E2323"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10sp"
+        android:layout_gravity="left"
+        android:gravity="left"
+        ></TextView>
+
+    <Button
+        android:onClick="register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/register_here"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000"
+        android:background="#fff"
+        android:id="@+id/signUp"
+        android:layout_margin="1dp"
         android:textAllCaps="false"
         ></Button>
 

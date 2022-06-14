@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_200"
+    tools:context=".HomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_200"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/my_calculator"
+            android:textSize="45sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:id="@+id/mycalculator"
+            android:textAllCaps="true"
+            ></TextView>
+
+        <EditText
+            android:id="@+id/firstnumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"
+            android:background="#FFFFFF"
+            android:gravity="left"
+            android:hint=" Enter 1st number..."
+            android:inputType="numberDecimal"
+            android:textColorHint="#78909C"
+            android:textSize="40sp"
+            android:autofillHints=""></EditText>
+
+        <EditText
+            android:id="@+id/secondnumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"
+            android:background="#FFFFFF"
+            android:gravity="left"
+            android:hint=" Enter 2nd number..."
+            android:inputType="numberDecimal"
+            android:textColorHint="#78909C"
+            android:textSize="40sp"
+            android:autofillHints=""></EditText>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="Reset"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#FD0303"
+            android:background="@color/white"
+            android:id="@+id/Reset"
+            android:layout_margin="5dp"
+            android:enabled="false"
+            android:textAllCaps="false"
+            ></Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="+"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@color/cardview_light_background"
+                android:id="@+id/Sum"
+                android:layout_margin="5dp"
+                ></Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="-"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@color/cardview_light_background"
+                android:id="@+id/Sub"
+                android:layout_margin="5dp"
+                ></Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="*"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@color/cardview_light_background"
+                android:id="@+id/Mul"
+                android:layout_margin="5dp"
+                ></Button>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="/"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:background="@color/cardview_light_background"
+                android:id="@+id/Div"
+                android:layout_margin="5dp"
+                ></Button>
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

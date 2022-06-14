@@ -31,7 +31,7 @@ public class Retrive extends AppCompatActivity {
         recyclerView = recyclerView.findViewById(R.id.recycler);
         firebaseFirestore = FirebaseFirestore.getInstance();
         getList = new ArrayList<>();
-         adapter = new Dataget(getList);
+        adapter = new Dataget(getList);
         documentReference = firebaseFirestore.collection("Datastore").document();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(Retrive.this));

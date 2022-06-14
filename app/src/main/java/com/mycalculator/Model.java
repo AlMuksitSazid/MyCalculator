@@ -33,6 +33,4 @@ public class Model {
         this.sum = sum;
     }
 
-    public Model(String email, String password) {
-    }
 }
