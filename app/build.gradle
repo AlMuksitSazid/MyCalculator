@@ -11,7 +11,7 @@ android {
             keyPassword '123456'
         }
     }
-    compileSdk 26
+    compileSdk 29
 
     defaultConfig {
         applicationId "com.mycalculator"
@@ -27,10 +27,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
             multiDexEnabled true
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
         }
     }
     compileOptions {
@@ -38,6 +41,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildToolsVersion '32.1.0 rc1'
+    dependenciesInfo {
+        includeInApk false
+    }
 }
 
 dependencies {
@@ -52,7 +58,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads-lite:21.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.airbnb.android:lottie:3.4.0'
-    implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
     implementation 'com.google.firebase:firebase-auth:21.0.5'
     implementation 'com.google.firebase:firebase-storage:20.0.1'
     implementation 'com.google.android.material:material:1.6.1'
