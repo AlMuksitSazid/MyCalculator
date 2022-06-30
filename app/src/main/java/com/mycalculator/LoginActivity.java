@@ -34,7 +34,7 @@ import es.dmoral.toasty.Toasty;
 public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
-    Button signIn;
+    Button signIn, signUp;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     @Override
@@ -46,6 +46,14 @@ public class LoginActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         signIn = (Button) findViewById(R.id.signIn);
+        signUp = (Button) findViewById(R.id.signUp);
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+            }
+        });
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,9 +120,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void register(View view) {
-        startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
     }
 }

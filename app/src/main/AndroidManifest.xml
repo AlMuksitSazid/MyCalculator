@@ -29,9 +29,6 @@
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Retrive"
-            android:exported="false" />
-        <activity
             android:name=".text_view"
             android:exported="false" />
         <activity
